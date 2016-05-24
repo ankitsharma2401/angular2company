@@ -1,0 +1,11 @@
+.modal-header{
+        background-color: #0033cc;
+        color:white;
+    }
+    .modal-footer .btn-default {
+    background: #47476b;
+    color: #ffffff;
+}
+textarea.form-control {
+  resize: none;
+}
