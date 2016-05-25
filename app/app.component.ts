@@ -9,12 +9,12 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated'
   <h1>My First Angular 2 App</h1>
   
   <nav>
-  <a data-toggle="modal" data-target="#myModal">Add Custom Message</a>
-  <a data-toggle="modal" data-target="#editViewModal">Edit/View Custom Message</a>
+  <a data-toggle="modal" data-target="#myModal" [hidden]="flag">Add Custom Message</a>
+  <a data-toggle="modal" data-target="#editViewModal" [hidden]="!flag">Edit/View Custom Message</a>
   </nav>
-  {{addMessage}}
-<add-message (childChanged)="addMessage=$event"></add-message>
-<edit-view-message [passedValue]="addMessage"></edit-view-message>
+  <span [hidden]="!editFlag">{{editViewMessage}}</span>
+<add-message (childChanged)="addMessage=$event" (addFlag)="flag=$event"></add-message>
+<edit-view-message [passedValue]="addMessage" (editViewChanged)="editViewMessage=$event" (editViewFlag)="editFlag=$event"></edit-view-message>
 
   `,
   directives:[AddCustomMessageComponent, ROUTER_DIRECTIVES,EditViewCustomMessageComponent]
@@ -22,4 +22,7 @@ import {ROUTER_DIRECTIVES} from '@angular/router-deprecated'
 
 export class AppComponent { 
   addMessage:string;
+  flag:boolean;
+  editViewMessage:string;
+  editFlag:boolean;
 }

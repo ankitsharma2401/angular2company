@@ -18,16 +18,16 @@
           <div class="form-group">
             <label for="comment">Custom Message:</label>
             <textarea class="form-control" rows="5" #count id="comment" name="comment" [ngFormControl]="myForm.controls['comment']" maxlength="250"
-            value="parentValue"
+            [(ngModel)]="parentValue" (keyup)="onChangeEditView(count.value)"
             ></textarea>
-            {{parentValue}}
+            
         </div>
        
           <span>{{250-count.value.length}} characters left</span>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-warning" >Change</button>
+          <button type="button" class="btn btn-warning" (click)="editViewClicked()" data-dismiss="modal">Change</button>
         </div>
         </form>
       </div>

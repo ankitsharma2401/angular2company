@@ -14,6 +14,8 @@ var core_2 = require('@angular/core');
 var AddCustomMessageComponent = (function () {
     function AddCustomMessageComponent(formBuilder) {
         this.formBuilder = formBuilder;
+        this.flag = false;
+        this.addFlag = new core_1.EventEmitter();
         this.childChanged = new core_1.EventEmitter();
     }
     AddCustomMessageComponent.prototype.ngOnInit = function () {
@@ -21,9 +23,20 @@ var AddCustomMessageComponent = (function () {
             comment: ['', common_1.Validators.required]
         });
     };
+    AddCustomMessageComponent.prototype.closeClicked = function () {
+        this.clearText = null;
+    };
+    AddCustomMessageComponent.prototype.addClicked = function (event) {
+        this.flag = true;
+        this.addFlag.emit(this.flag);
+    };
     AddCustomMessageComponent.prototype.onChange = function (value) {
         this.childChanged.emit(value);
     };
+    __decorate([
+        core_2.Output(), 
+        __metadata('design:type', Object)
+    ], AddCustomMessageComponent.prototype, "addFlag", void 0);
     __decorate([
         core_2.Output(), 
         __metadata('design:type', Object)

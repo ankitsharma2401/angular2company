@@ -18,7 +18,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n  <h1>My First Angular 2 App</h1>\n  \n  <nav>\n  <a data-toggle=\"modal\" data-target=\"#myModal\">Add Custom Message</a>\n  <a data-toggle=\"modal\" data-target=\"#editViewModal\">Edit/View Custom Message</a>\n  </nav>\n  {{addMessage}}\n<add-message (childChanged)=\"addMessage=$event\"></add-message>\n<edit-view-message [passedValue]=\"addMessage\"></edit-view-message>\n\n  ",
+            template: "\n  <h1>My First Angular 2 App</h1>\n  \n  <nav>\n  <a data-toggle=\"modal\" data-target=\"#myModal\" [hidden]=\"flag\">Add Custom Message</a>\n  <a data-toggle=\"modal\" data-target=\"#editViewModal\" [hidden]=\"!flag\">Edit/View Custom Message</a>\n  </nav>\n  <span [hidden]=\"!editFlag\">{{editViewMessage}}</span>\n<add-message (childChanged)=\"addMessage=$event\" (addFlag)=\"flag=$event\"></add-message>\n<edit-view-message [passedValue]=\"addMessage\" (editViewChanged)=\"editViewMessage=$event\" (editViewFlag)=\"editFlag=$event\"></edit-view-message>\n\n  ",
             directives: [add_custom_message_component_1.AddCustomMessageComponent, router_deprecated_1.ROUTER_DIRECTIVES, edit_view_custom_message_1.EditViewCustomMessageComponent]
         }), 
         __metadata('design:paramtypes', [])
